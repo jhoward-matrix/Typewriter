@@ -2,7 +2,7 @@
 
 namespace Typewriter.Tests.Support
 {
-    public class HttpPutAttribute : Attribute
-    {
-    }
+  public class HttpPutAttribute : Attribute
+  {
+  }
 }

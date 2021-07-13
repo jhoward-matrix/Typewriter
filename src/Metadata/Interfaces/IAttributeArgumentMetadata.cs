@@ -1,11 +1,11 @@
 ﻿namespace Typewriter.Metadata.Interfaces
 {
-    public interface IAttributeArgumentMetadata
-    {
-        ITypeMetadata Type { get; }
+  public interface IAttributeArgumentMetadata
+  {
+    ITypeMetadata Type { get; }
 
-        ITypeMetadata TypeValue { get; }
+    ITypeMetadata TypeValue { get; }
 
-        object Value { get; }
-    }
+    object Value { get; }
+  }
 }

@@ -45,7 +45,7 @@
 //            Parameters = parameters;
 //            this.textView = textView;
 //        }
-        
+
 //        public IParameter CurrentParameter
 //        {
 //            get 
@@ -58,7 +58,7 @@
 //                {
 //                    var previousParameter = currentParameter;
 //                    var tempHandler = this.CurrentParameterChanged;
-                    
+
 //                    currentParameter = value;
 
 //                    if (tempHandler != null)

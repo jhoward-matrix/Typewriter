@@ -3,31 +3,31 @@ using System.Collections.Generic;
 
 namespace Typewriter.CodeModel
 {
+  /// <summary>
+  /// Represents a collection of items.
+  /// </summary>
+  public interface ItemCollection<out T> : IReadOnlyList<T>, IFilterable
+  {
+  }
+
+  /// <summary>
+  /// Provides access to filter selectors for item collections.
+  /// </summary>
+  public interface IFilterable
+  {
     /// <summary>
-    /// Represents a collection of items.
+    /// Returns a selector to filter items by attributes.
     /// </summary>
-    public interface ItemCollection<out T> : IReadOnlyList<T>, IFilterable
-    {
-    }
+    Func<Item, IEnumerable<string>> AttributeFilterSelector { get; }
 
     /// <summary>
-    /// Provides access to filter selectors for item collections.
+    /// Returns a selector to filter items by inheritance.
     /// </summary>
-    public interface IFilterable
-    {
-        /// <summary>
-        /// Returns a selector to filter items by attributes.
-        /// </summary>
-        Func<Item, IEnumerable<string>> AttributeFilterSelector { get; }
+    Func<Item, IEnumerable<string>> InheritanceFilterSelector { get; }
 
-        /// <summary>
-        /// Returns a selector to filter items by inheritance.
-        /// </summary>
-        Func<Item, IEnumerable<string>> InheritanceFilterSelector { get; }
-
-        /// <summary>
-        /// Returns a selector to filter items by name.
-        /// </summary>
-        Func<Item, IEnumerable<string>> ItemFilterSelector { get; }
-    }
+    /// <summary>
+    /// Returns a selector to filter items by name.
+    /// </summary>
+    Func<Item, IEnumerable<string>> ItemFilterSelector { get; }
+  }
 }

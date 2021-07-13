@@ -1,8 +1,6 @@
-﻿using System;
-
-namespace Typewriter.Metadata.Interfaces
+﻿namespace Typewriter.Metadata.Interfaces
 {
-    public interface IDelegateMetadata : IMethodMetadata
-    {
-    }
+  public interface IDelegateMetadata : IMethodMetadata
+  {
+  }
 }

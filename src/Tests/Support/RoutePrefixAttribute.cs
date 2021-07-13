@@ -2,13 +2,13 @@
 
 namespace Typewriter.Tests.Support
 {
-    internal class RoutePrefixAttribute : Attribute
-    {
-        private string v;
+  internal class RoutePrefixAttribute : Attribute
+  {
+    private string v;
 
-        public RoutePrefixAttribute(string v)
-        {
-            this.v = v;
-        }
+    public RoutePrefixAttribute(string v)
+    {
+      this.v = v;
     }
+  }
 }

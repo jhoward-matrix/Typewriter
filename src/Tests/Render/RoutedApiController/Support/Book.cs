@@ -1,6 +1,6 @@
 ﻿namespace Typewriter.Tests.Render.RoutedApiController.Support
 {
-    public class Book
-    {
-    }
+  public class Book
+  {
+  }
 }

@@ -2,7 +2,7 @@
 
 namespace Typewriter.Tests.Support
 {
-    public class FromBodyAttribute : Attribute
-    {
-    }
+  public class FromBodyAttribute : Attribute
+  {
+  }
 }

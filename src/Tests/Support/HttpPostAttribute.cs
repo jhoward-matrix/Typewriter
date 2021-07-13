@@ -2,14 +2,14 @@
 
 namespace Typewriter.Tests.Support
 {
-    public class HttpPostAttribute : Attribute
+  public class HttpPostAttribute : Attribute
+  {
+    public HttpPostAttribute()
     {
-        public HttpPostAttribute()
-        {
-        }
-
-        public HttpPostAttribute(string route)
-        {
-        }
     }
+
+    public HttpPostAttribute(string route)
+    {
+    }
+  }
 }

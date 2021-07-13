@@ -1,9 +1,7 @@
-﻿using System;
-
-namespace Typewriter.Metadata.Interfaces
+﻿namespace Typewriter.Metadata.Interfaces
 {
-    public interface ITypeParameterMetadata
-    {
-        string Name { get; }
-    }
+  public interface ITypeParameterMetadata
+  {
+    string Name { get; }
+  }
 }

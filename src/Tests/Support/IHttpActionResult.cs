@@ -1,6 +1,6 @@
 ﻿namespace Typewriter.Tests.Support
 {
-    public interface IHttpActionResult<T>
-    {
-    }
+  public interface IHttpActionResult<T>
+  {
+  }
 }

@@ -1,11 +1,9 @@
-﻿using System;
-
-namespace Typewriter.Metadata.Interfaces
+﻿namespace Typewriter.Metadata.Interfaces
 {
-    public interface IPropertyMetadata : IFieldMetadata
-    {
-        bool IsAbstract { get; }
-        bool HasGetter { get; }
-        bool HasSetter { get; }
-    }
+  public interface IPropertyMetadata : IFieldMetadata
+  {
+    bool IsAbstract { get; }
+    bool HasGetter { get; }
+    bool HasSetter { get; }
+  }
 }

@@ -5,28 +5,28 @@ using Xunit;
 
 namespace Typewriter.Tests.TestInfrastructure
 {
-    public class CodeDomFixture : ITestFixture
+  public class CodeDomFixture : ITestFixture
+  {
+    public CodeDomFixture()
     {
-        public CodeDomFixture()
-        {
-            Dte = TestInfrastructure.Dte.GetInstance("Typewriter.sln");
-            Provider = new CodeDomMetadataProvider(Dte);
+      Dte = TestInfrastructure.Dte.GetInstance("Typewriter.sln");
+      Provider = new CodeDomMetadataProvider(Dte);
 
-            // Handle threading errors when calling into Visual Studio.
-            MessageFilter.Register();
-        }
-
-        public DTE Dte { get; }
-        public IMetadataProvider Provider { get; }
-
-        public void Dispose()
-        {
-            MessageFilter.Revoke();
-        }
+      // Handle threading errors when calling into Visual Studio.
+      MessageFilter.Register();
     }
 
-    [CollectionDefinition(nameof(CodeDomFixture))]
-    public class CodeDomCollection : ICollectionFixture<CodeDomFixture>
+    public DTE Dte { get; }
+    public IMetadataProvider Provider { get; }
+
+    public void Dispose()
     {
+      MessageFilter.Revoke();
     }
+  }
+
+  [CollectionDefinition(nameof(CodeDomFixture))]
+  public class CodeDomCollection : ICollectionFixture<CodeDomFixture>
+  {
+  }
 }

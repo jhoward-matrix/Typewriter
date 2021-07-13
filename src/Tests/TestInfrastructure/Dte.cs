@@ -1,71 +1,71 @@
-﻿using System;
+﻿using EnvDTE;
+using System;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
-using EnvDTE;
 
 namespace Typewriter.Tests.TestInfrastructure
 {
-    internal static class Dte
+  internal static class Dte
+  {
+    [DllImport("ole32.dll")]
+    private static extern int GetRunningObjectTable(uint dwReserved, out IRunningObjectTable pprot);
+
+    [DllImport("ole32.dll")]
+    private static extern int CreateBindCtx(uint dwReserved, out IBindCtx ppbc);
+
+    internal static DTE GetInstance(string solution)
     {
-        [DllImport("ole32.dll")]
-        private static extern int GetRunningObjectTable(uint dwReserved, out IRunningObjectTable pprot);
+      const string visualStudioProgId = "!VisualStudio.DTE.";
 
-        [DllImport("ole32.dll")]
-        private static extern int CreateBindCtx(uint dwReserved, out IBindCtx ppbc);
+      IRunningObjectTable runningObjectTable = null;
+      IEnumMoniker enumMoniker = null;
+      IBindCtx bindCtx = null;
 
-        internal static DTE GetInstance(string solution)
+      try
+      {
+        Marshal.ThrowExceptionForHR(GetRunningObjectTable(0, out runningObjectTable));
+        runningObjectTable.EnumRunning(out enumMoniker);
+
+        IMoniker[] monikers = new IMoniker[1];
+        enumMoniker.Reset();
+
+        Marshal.ThrowExceptionForHR(CreateBindCtx(0, out bindCtx));
+
+        while (enumMoniker.Next(1, monikers, IntPtr.Zero) == 0)
         {
-            const string visualStudioProgId = "!VisualStudio.DTE.";
+          string displayName;
+          monikers[0].GetDisplayName(bindCtx, null, out displayName);
 
-            IRunningObjectTable runningObjectTable = null;
-            IEnumMoniker enumMoniker = null;
-            IBindCtx bindCtx = null;
+          if (displayName.StartsWith(visualStudioProgId))
+          {
+            object o;
+            Marshal.ThrowExceptionForHR(runningObjectTable.GetObject(monikers[0], out o));
 
-            try
-            {
-                Marshal.ThrowExceptionForHR(GetRunningObjectTable(0, out runningObjectTable));
-                runningObjectTable.EnumRunning(out enumMoniker);
+            var d = (DTE)o;
 
-                IMoniker[] monikers = new IMoniker[1];
-                enumMoniker.Reset();
-
-                Marshal.ThrowExceptionForHR(CreateBindCtx(0, out bindCtx));
-
-                while (enumMoniker.Next(1, monikers, IntPtr.Zero) == 0)
-                {
-                    string displayName;
-                    monikers[0].GetDisplayName(bindCtx, null, out displayName);
-
-                    if (displayName.StartsWith(visualStudioProgId))
-                    {
-                        object o;
-                        Marshal.ThrowExceptionForHR(runningObjectTable.GetObject(monikers[0], out o));
-
-                        var d = (DTE)o;
-
-                        if (d.Solution.FullName.EndsWith(solution, StringComparison.InvariantCultureIgnoreCase)) return d;
-                    }
-                }
-            }
-            finally
-            {
-                if (runningObjectTable != null)
-                {
-                    Marshal.ReleaseComObject(runningObjectTable);
-                }
-
-                if (enumMoniker != null)
-                {
-                    Marshal.ReleaseComObject(enumMoniker);
-                }
-
-                if (bindCtx != null)
-                {
-                    Marshal.ReleaseComObject(bindCtx);
-                }
-            }
-
-            return null;
+            if (d.Solution.FullName.EndsWith(solution, StringComparison.InvariantCultureIgnoreCase)) return d;
+          }
         }
+      }
+      finally
+      {
+        if (runningObjectTable != null)
+        {
+          Marshal.ReleaseComObject(runningObjectTable);
+        }
+
+        if (enumMoniker != null)
+        {
+          Marshal.ReleaseComObject(enumMoniker);
+        }
+
+        if (bindCtx != null)
+        {
+          Marshal.ReleaseComObject(bindCtx);
+        }
+      }
+
+      return null;
     }
+  }
 }

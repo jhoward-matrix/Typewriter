@@ -2,10 +2,10 @@
 
 namespace Typewriter.Tests.Support
 {
-    public class AcceptVerbsAttribute : Attribute
+  public class AcceptVerbsAttribute : Attribute
+  {
+    public AcceptVerbsAttribute(params string[] verbs)
     {
-        public AcceptVerbsAttribute(params string[] verbs)
-        {
-        }
     }
+  }
 }

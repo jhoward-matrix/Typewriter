@@ -2,7 +2,7 @@
 
 namespace Typewriter.Tests.Support
 {
-    public class HttpDeleteAttribute : Attribute
-    {
-    }
+  public class HttpDeleteAttribute : Attribute
+  {
+  }
 }
