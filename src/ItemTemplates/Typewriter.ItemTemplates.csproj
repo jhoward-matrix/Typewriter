@@ -93,6 +93,7 @@
     <VSTemplate Include="Empty\EmptyCSharp.vstemplate">
       <OutputSubPath>Web\Scripts</OutputSubPath>
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </VSTemplate>
   </ItemGroup>
   <ItemGroup>

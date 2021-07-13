@@ -23,7 +23,6 @@
     <Assets>
         <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
         <Asset Type="Microsoft.VisualStudio.MefComponent" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%|" />
-        <Asset Type="Microsoft.VisualStudio.ItemTemplate" d:Source="Project" d:ProjectName="Typewriter.ItemTemplates" d:TargetPath="|Typewriter.ItemTemplates;TemplateProjectOutputGroup|" Path="ItemTemplates" d:VsixSubPath="ItemTemplates" />
         <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="File" Path="Resources\Icons.pkgdef" />
         <Asset Type="Microsoft.VisualStudio.Assembly" d:Source="File" Path="Microsoft.CodeAnalysis.CSharp.dll" AssemblyName="Microsoft.CodeAnalysis.CSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" d:VsixSubPath="sdf" />
         <Asset Type="Microsoft.VisualStudio.Assembly" d:Source="File" Path="Microsoft.CodeAnalysis.CSharp.Workspaces.dll" AssemblyName="Microsoft.CodeAnalysis.CSharp.Workspaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
